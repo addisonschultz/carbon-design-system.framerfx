@@ -24,13 +24,8 @@ jobs:
 
             sudo apt update
 
-            sudo apt-get update
-
             sudo apt install hub
 
-            sudo apt-get install hub
-
-            echo check
       - run:
           command: |
             didImportComponents=false
