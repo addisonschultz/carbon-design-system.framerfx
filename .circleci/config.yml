@@ -30,7 +30,7 @@ jobs:
 
             sudo apt-get install hub
 
-            echo Done
+            echo check
       - run:
           command: |
             didImportComponents=false
