@@ -10,4 +10,4 @@ workflows:
   version: 2.1
   test:
     jobs:
-      - cli-orb/build
+      - bridge/build
