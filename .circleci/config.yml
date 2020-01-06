@@ -148,8 +148,6 @@ workflows:
   # Framer X file. Afterwards, a PR will be submitted to Github.
   # Currently set to run at 8am every morning.
   hourly-import-check:
-    jobs:
-      - component-import
     triggers:
       - schedule:
           # cron: "0 8 * * *"
@@ -158,6 +156,8 @@ workflows:
             branches:
               only:
                 - master
+    jobs:
+      - component-import
 
   # This job will run any time there are changes that are merged
   # to master. This will in turn publish these updates to the
