@@ -150,7 +150,7 @@ workflows:
   hourly-import-check:
     triggers:
       - schedule:
-          cron: "02 * * * *"
+          cron: "30 * * * *"
           filters:
             branches:
               only:
