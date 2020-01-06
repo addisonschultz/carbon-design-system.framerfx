@@ -145,12 +145,11 @@ workflows:
   # This step will run on a cron schedule, and see if there were
   # any updates that were made to a dependency. If yes, then the
   # component importer will run, adding the new changes to the
-  # Framer X file. Afterwards, a PR will be submitted to Github.
-  # Currently set to run at 8am every morning.
+  # Framer X file. Afterwards, a PR will be submitted to Github
+  # Currently set to run at 8am every day
   hourly-import-check:
     triggers:
       - schedule:
-          # cron: "0 8 * * *"
           cron: "*/2 * * * *"
           filters:
             branches:
