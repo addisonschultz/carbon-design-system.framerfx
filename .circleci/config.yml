@@ -58,6 +58,7 @@ jobs:
               echo "Component Importer Branch does not yet exist, creating new one"
               # Checkout a new branch
               hub checkout -b $COMPONENT_IMPORTER_BRANCH_NAME
+              echo problem here
             fi
 
             # Check if a component importer configuration already exists
