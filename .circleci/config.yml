@@ -4,10 +4,38 @@
 #
 version: 2.1
 orbs:
-  bridge: cli-orb/bridge@0.1.0
+  bridge: cli-orb/bridge@0.2.0
 
 workflows:
   version: 2.1
-  test:
+  # This step will run on a cron schedule, and see if there were
+  # any updates that were made to a dependency. If yes, then the
+  # component importer will run, adding the new changes to the
+  # Framer X file. Afterwards, a PR will be submitted to Github
+  # Currently set to run at 8am every day
+  hourly-import-check:
+    triggers:
+      - schedule:
+          cron: "0 8 * * *"
+          filters:
+            branches:
+              only:
+                - master
     jobs:
-      - bridge/build
+      - bridge/component-import
+
+  # This job will run any time there are changes that are merged
+  # to master. This will in turn publish these updates to the
+  # respective package in Framer X using the framer-cli.
+  build-and-publish:
+    jobs:
+      - bridge/build:
+          filters:
+            branches:
+              only: master
+      - bridge/publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
