@@ -35,7 +35,7 @@ workflows:
               only: master
       - bridge/publish:
           requires:
-            - build
+            - bridge/build
           filters:
             branches:
               only: master
